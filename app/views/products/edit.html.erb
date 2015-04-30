@@ -1,0 +1,41 @@
+<div class="container">
+	<h1>Edit: <%= @product.name %></h1>
+	<p class="error"><%= flash[:registration_errors] %></p>
+	<form action="/products/<%= @product.id %>" method="post" class="form-horizontal">
+		<fieldset>
+			<div class="form-group">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="_method" value="patch">
+				<label for="name" class="col-lg-2 control-label">Name:</label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control" name="name" value="<%= @product.name %>">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-lg-2 control-label">Description:</label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control"  name="description" value="<%= @product.description %>">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="category" class="col-lg-2 control-label">Category:</label>
+				<div class="col-lg-6">
+					<select class="form-control" name="category" id="select">
+						<%= @categories.each do |category| %>
+							<option value="<%= category.id %>"><%= category.name %></option>
+						<% end %>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="pricing" class="col-lg-2 control-label">Pricing:</label>
+				<div class="col-lg-6">
+					<input type="number" class="form-control"  name="pricing" value="<%= @product.pricing %>">
+				</div>
+			</div>
+			<div class="col-lg-offset-2">
+				<input type="submit" class="btn btn-success" value="Update"> <a href="/products/<%= @product.id %>" class="btn btn-default">Back</a> <a href="/" class="btn btn-default">Home</a>
+			</div>
+		</fieldset>
+	</form>
+</div>

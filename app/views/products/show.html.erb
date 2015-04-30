@@ -1,0 +1,7 @@
+<div class="container">
+	<h2><label class="col-lg-3">Name:</label> <%= @product.name %></h2>
+	<h2><label class="col-lg-3">Description:</label> <%= @product.description %></h2>
+	<h2><label class="col-lg-3">Category:</label> <%= @product.category.name %></h2>
+	<h2><label class="col-lg-3">Price:</label> <%= @product.pricing %></h2>
+	<a href="/products/<%= @product.id %>/edit" class="btn btn-warning">Edit</a> <a href="/" class="btn btn-default">Back</a>
+</div>
