@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_comments = Product.find(params[:id]).comments.reverse
+
   end
 
   def new
@@ -28,7 +30,7 @@ class ProductsController < ApplicationController
       redirect_to '/'
     else
       flash[:product_errors] = @product.errors.full_messages
-      redirect_to '/products/new'
+      redirect_to :back
     end
   end
 
